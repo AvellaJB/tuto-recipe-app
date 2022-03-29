@@ -3,6 +3,9 @@
 import { FaPizzaSlice, FaHamburger } from "react-icons/fa";
 import { GiNoodles, GiChopsticks } from "react-icons/gi";
 import styled from "styled-components";
+//Il existe Link et NavLink, on utilise navlink parce que cela donne la possibilité
+//d'ajouter une class active, ce qui va permettre de gérer le style.
+import { NavLink } from "react-router-dom";
 
 function Category() {
   return (
