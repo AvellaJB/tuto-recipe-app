@@ -1,9 +1,9 @@
 import Pages from "./pages/Pages.jsx";
-
+import Category from "./components/Category.jsx";
 function App() {
   return (
     <div className="App">
-      <h1>Hello</h1>
+      <Category />
       <Pages />
     </div>
   );
