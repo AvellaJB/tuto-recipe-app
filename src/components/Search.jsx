@@ -1,13 +1,37 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
+// Pour pouvoir naviguer sans utiliser de liens on a useNavigate
+//ici on s'en sert pour aller sur une autre page quand on appuie sur entrer dans la searchbar
+import { useNavigate } from "react-router-dom";
 
 function Search() {
+  //On utilise useState pour récupérer la value de l'input.
+  const [input, setInput] = useState("");
+  //Ajout de la fonction Navigate
+  const navigate = useNavigate();
+
+  //On cherche à récupérer le enter pour créer une nouvelle page.
+  const submitHandler = (e) => {
+    //On empêche le refresh de la page on submit
+    e.preventDefault();
+    //Du coup onSubmit on navigate vers la page searched + input
+    //Gâce à l'ajout de useNavigate
+    navigate("/searched/" + input);
+  };
+
   return (
-    <FormStyle>
+    <FormStyle onSubmit={submitHandler}>
       <div>
         <FaSearch></FaSearch>
-        <input type="text" />
+        {/* On met l'input de useState pour récupérer la value saisie.
+        Comme useState est un empty string, il faut ajouter le onChange
+        pour permettre de récupérer la value dans setInput */}
+        <input
+          onChange={(e) => setInput(e.target.value)}
+          type="text"
+          value={input}
+        />
       </div>
     </FormStyle>
   );
